@@ -1,11 +1,10 @@
-import './App.css'
-import AIChatBot from './pages/AiChatBot'
+import ErrorBoundary from './components/ErrorBoundary';
+import AIChatBot from './pages/AiChatBot';
 
-function App() {
-
+export default function App() {
   return (
-    <AIChatBot />
-  )
+    <ErrorBoundary>
+      <AIChatBot />
+    </ErrorBoundary>
+  );
 }
-
-export default App
