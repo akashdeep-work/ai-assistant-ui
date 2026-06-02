@@ -41,7 +41,7 @@ export default function ChatSidebar({
 
   const sidebarItems = threadIds.map((threadId) => ({
     thread_id: threadId,
-    last_message: chatMap.get(threadId)?.last_message || 'New conversation',
+    title: chatMap.get(threadId)?.title || 'New conversation',
   }));
 
   return (
@@ -143,7 +143,7 @@ export default function ChatSidebar({
 
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-semibold text-slate-100">
-                        {chat.last_message}
+                        {chat.title}
                       </span>
                       <span className="block truncate text-xs text-slate-500">
                         {chat.thread_id}

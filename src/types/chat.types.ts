@@ -7,7 +7,7 @@ export interface MessageDetails {
 
 export interface ChatItem {
   thread_id: string;
-  last_message: string;
+  title: string;
 }
 
 export interface ChatMessagesResponse {
