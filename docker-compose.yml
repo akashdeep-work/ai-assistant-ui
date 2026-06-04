@@ -7,5 +7,5 @@ services:
       dockerfile: Dockerfile
     container_name: react_ai_demo
     ports:
-      - "127.0.0.1:3000:80"
+      - "127.0.0.1:4000:80"
     restart: always
