@@ -46,10 +46,10 @@ interface StreamMessageOptions {
   onChunk: (chunk: string) => void;
 }
 
-const getAuthHeaders = () => {
-  const token = localStorage.getItem('accessToken');
-  return token ? { Authorization: `Bearer ${token}` } : {};
-};
+// const getAuthHeaders = () => {
+//   const token = localStorage.getItem('accessToken');
+//   return token ? { Authorization: `Bearer ${token}` } : {};
+// };
 
 const readErrorResponse = async (response: Response) => {
   const text = await response.text();
@@ -78,14 +78,16 @@ const readErrorResponse = async (response: Response) => {
 };
 
 export const streamMessage = async ({ payload, signal, onChunk }: StreamMessageOptions) => {
+  
+  const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'text/event-stream, application/x-ndjson, text/plain, application/json',
+    })
+  
   const response = await fetch(buildApiUrl('/v1/api/chats/query'), {
     method: 'POST',
     signal,
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'text/event-stream, application/x-ndjson, text/plain, application/json',
-      ...getAuthHeaders(),
-    },
+    headers: headers,
     body: JSON.stringify(payload),
   });
 

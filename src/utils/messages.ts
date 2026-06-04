@@ -10,7 +10,7 @@ export const makeMessageId = (prefix = 'message') => {
 };
 
 export const normalizeRole = (role: string): MessageRole => {
-  if (role === 'assistant' || role === 'user' || role === 'system' || role === 'tool') {
+  if (role === 'assistant' || role === 'user') {
     return role;
   }
 
